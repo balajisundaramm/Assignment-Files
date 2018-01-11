@@ -1,0 +1,38 @@
+body{
+    margin: 10px 20% 10px 20%;
+}
+.content-center{
+    text-align: center;
+    border-bottom: solid;
+    border-bottom-color: green;
+}
+legend {
+    display: block;
+    padding-left: 2px;
+    padding-right: 2px;
+    border: none;
+    color: green;
+}
+table{
+	width: 100%;
+}
+.col1 {
+	width: 25%;
+	padding-bottom: 10pt;
+}
+.col2{
+	width: 75%;
+	padding-bottom: 10pt;
+}
+	
+span{
+	color: red;
+}
+select {
+	height: 100%;
+	width: 70%;
+}
+textarea {
+	height: 100%;
+	width: 70%;
+}

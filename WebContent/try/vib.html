@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+2 <html>
+3 <head>
+    4 <meta charset="ISO-8859-1">
+    5 <title>EmployeeFormBootstrap</title>
+    6 <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet"
+            8         href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+
+
+     <script
+                 src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     <link
+                 href="https://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css"
+                 rel="stylesheet">
+     <link rel="stylesheet"
+                      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+     <!-- jQuery library -->
+     <script
+                 src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+     <!-- Latest compiled JavaScript -->
+     <script
+                 src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+             <link rel="stylesheet" href="empjq.css">
+
+             <script
+             src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+         </script>
+
+    32 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    33 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    34 <script
+        35         src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    36 <script type="text/javascript" src="empjq.js">
+    37
+    38 </script>
+    39
+    40 <style type="text/css">
+    41 #dialog-form {
+        42         display: none;
+        43 }
+    44 </style>
+    45 </head>
+46
+47 <body>
+48         <div class="container-fluid">
+    49                 <div class="row">
+    50                         <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12">
+    51                                 <h1 align="center"
+                                           52                                         style="color: white; background-color: black; margin-top: 0%;">Employee
+    53                                         Details</h1>
+    54                                 <p id="eerr" style="color: red; margin-top: 0%;" align="center"></p>
+    55                         </div>
+    56                 </div>
+    57                 <div class="row">
+    58                         <div class="col-sm-2 col-sx-2 col-md-3 col-lg-3">
+    59
+    60
+    61                                 <button type="button" class="btn btn-success" id="btn">View
+    62                                         All Employees</button>
+    63
+    64                         </div>
+    65                 </div>
+    66
+    67                 <div id="dialog-form" title="Create new user">
+    68
+    69                         <p>All form fields are required.</p>
+    70
+    71                         <form id="myempForm">
+    72
+    73
+    74
+    75                                 <label for="first_name"> Name</label></br> <input type="text" name="name"
+                                                                                         76                                         id="first-name" /> <br /> <label for="email"> Email</label><br />
+    77                                 <input type="text" name="email" id="email" /><br /> <label
+        78                                         for="phone">Phone</label><br /> <input type="text" name="phone"
+                                                                                          79                                         id="phone" /> <br /> <label for="company"> Company</label><br />
+    80                                 <input type="text" name="company" id="company" /> </br>
+    81
+    82
+    83
+    84                         </form>
+    85
+    86                 </div>
+
+    89                 <div class="row">
+    90                         <div
+        91                                 class="col-sm-offset-10  col-md-offset-10 col-xs-offset-10 col-md-offset-10">
+    92
+    93                                 <button id="addemp" class="btn btn-success"
+                                               94                                         style="background-color: green; color: white; float: right;">Add
+    95                                         Employee</button>
+    96
+    97                         </div>
+    98                         <div class="row">
+    99                                 <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+    100                                         <div class="table-responsive">
+    101                                                 <table id="users" class="table">
+    102
+    103                                                         <thead>
+104
+105                                                                 <tr>
+    106
+    107                                                                         <th>Name</th>
+    108
+    109                                                                         <th>Email</th>
+    110
+    111                                                                         <th>Phone</th>
+    112
+    113                                                                         <th>Company</th>
+    114
+    115                                                                         <th>Edit</th>
+    116
+    117                                                                         <th>Delete</th>
+    118
+    119                                                                 </tr>
+120
+121                                                         </thead>
+    122
+    123                                                         <tbody>
+124
+125
+126
+127                                                         </tbody>
+    128
+    129                                                 </table>
+    130
+    131                                         </div>
+    132                                 </div>
+    133                         </div>
+    134
+    135                 </div>
+    136 </body>
+137 </html>
+Repo for intern testing PurposeRSSAtom

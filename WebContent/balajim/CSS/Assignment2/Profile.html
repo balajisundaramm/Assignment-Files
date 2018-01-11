@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Registration Form</title>
+<link rel="stylesheet" href="main.css">
+</head>
+<body>
+	<div class="content-center">
+		<h1>NCET Campus Placement</h1>
+	</div>
+	<div>
+	<form action="/do" method="post">
+		<fieldset>
+			<legend>Registration Form:</legend>
+			<table>
+					<tr>
+						<td class="col1"><label class="name">Full name:<span>*</span></label></td>
+						<td class="col2"><input type="text" id="name" placeholder="Enter full name" /></td>
+					</tr>
+					<tr>
+						<td class="col1"><label class="email">Email:<span>*</span></label></td>
+						<td class="col2"><input type="email" id="email"
+							placeholder="Enter valid email" /></td>
+					</tr>
+					<tr>
+						<td class="col1"><label class="mobile">Mobile :<span>*</span>
+						</label></td>
+						<td class="col2"><input type="text" id="mobile"
+							placeholder="Enter valid mobile number" /></td>
+					</tr>
+					<tr>
+						<td class="col1"><label class="gender"> Gender :<span>*</span></label></td>
+						<td class="col2"><input type="radio" name="gender" value="male" /> Male&nbsp;
+							<input type="radio" name="gender" value="female" /> Female</td>
+					</tr>
+
+					<tr>
+						<td class="col1"><label class="branch"> Branch :<span>*</span></label></td>
+						<td class="col2"><select>
+								<option value="branch">Select branch</option>
+								<option value="Computer science">Computer science</option>
+								<option value="Mechanical">Mechanical</option>
+								<option value="Electronics">Electronics</option>
+						</select></td>
+					</tr>
+
+					<tr>
+						<td class="col1"><label class="language"> Languages :<span>*</span></label>
+						</td>
+						<td class="col2"><input type="checkbox" name="language" value="C/C++">C/C++&nbsp;
+							<input type="checkbox" name="language" value="Java">Java&nbsp;
+							<input type="checkbox" name="language" value="Web Technologies">WebTechnologies &nbsp;
+							<input type="checkbox" name="language" value="DBMS">DBMS
+						</td>
+					</tr>
+					<tr>
+						<td class="col1"><label class="spoken">Spoken Language :<span>*</span>
+						</label></td>
+						<td class="col2"><select multiple="multiple" size="3" >
+								<option>English</option>
+								<option>Hindi</option>
+								<option>Kannada</option>
+								<option>Malayalam</option>
+								<option>Punjabi</option>
+								<option>Tamil</option>
+								<option>Telungu</option>
+						</select></td>
+					</tr>
+
+					<tr>
+						<td class="col1"><label class="self">Self Introduction : </label></td>
+						<td class="col2">
+						<textarea placeholder="Please give a brief introdction about yourself."  rows="5" cols="255" maxlength="50"></textarea>
+						</td>
+					</tr>			
+			</table>
+		</fieldset>
+		</form>
+	</div>
+</body>
+</html>

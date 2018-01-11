@@ -1,0 +1,31 @@
+body {
+    margin: 10px 15% 10px 15%;
+}
+.content-center{
+    text-align: center;
+    border-bottom: solid;
+    border-bottom-color: green;
+}
+.sub-heading h4{
+    background-color: dimgrey;
+}
+.objective{
+    margin: 20px;
+}
+table{
+    width: 100%;
+    text-align: left;
+    border: hidden;
+    border-collapse: collapse;
+}
+td {
+    border: groove;
+}
+th, td{
+    padding: 10px;
+    border-right:4px solid white;
+}
+th{
+    background-color: #4caf50;
+    -webkit-text-fill-color: white;
+}

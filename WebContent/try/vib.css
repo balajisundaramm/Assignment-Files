@@ -1,0 +1,45 @@
+body {
+
+}
+
+div.box {
+
+    height: 100px;
+    width: 100%;
+}
+
+.div1 {: left;
+    height: 100%;
+    width: 20%;
+}
+
+.div2 {
+
+    height: 100%;
+
+}
+
+th {
+    color: black;
+}
+
+.vr {
+    width: 1px;
+    background-color: #000;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 300px;
+}
+
+.error {
+    color: red;
+    border-color: red;
+
+}
+
+#dialog-form {
+
+    display: none;
+
+}

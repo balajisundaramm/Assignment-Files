@@ -1,0 +1,43 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Registration Form</title>
+</head>
+
+<body>
+<form id="register">
+    <fieldset>
+        <h3>Create new user
+            <button class="small-btn" name="close" onclick=""><b>x</b></button>
+        </h3>
+        <div class="scrollable"><br>
+            All form fields are required.
+            <br><br>
+
+            <label for="name">Name</label><br>
+            <input type="text" name="uname" id="fname">
+            <br><br>
+
+            <label for="email">Email</label><br>
+            <input type="email" name="uemail" id="em">
+            <br><br>
+
+            <label for="password">Password</label><br>
+            <input type="password" name="upassword" id="p">
+            <br><br>
+
+        </div>
+        <hr>
+        <button name="cancel" onclick="">Cancel</button>
+        <button name="create" onclick="">Create an account</button>
+    </fieldset>
+</form>
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

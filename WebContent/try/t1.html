@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <link rel="stylesheet" href="BookTickets.css" type="text/css"/>
+    <style>
+        h1 {
+            background-color: #ff8533;
+        }
+
+        body {
+            align: center;
+            margin-left: 300px;
+            margin-right: 350px;
+        }
+
+        .button {
+            align: center;
+            background-color: #ffaa33;
+        }
+    </style>
+    <script>
+        function Compare() {
+            var da = new Date(document.myform.ondate.value);
+            var db = new Date(document.myform.todate.value);
+            if (da > db) {
+                alert("return date cant be less then the onward date");
+                return false;
+            }
+
+
+        }
+    </script>
+</head>
+<body>
+
+<h1>Search and Book Tickets</h1>
+<form name="myform" onsubmit="return Compare()">
+    &nbsp; &nbsp;&nbsp; &nbsp;
+
+    <input type="radio" name="one" required/>&nbsp; &nbsp;One Way
+    &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+    <input type="radio" name="one"/>&nbsp; &nbsp;round Way
+    <hr style="border-top: dotted 1px;" required/>
+
+    &nbsp;&nbsp; &nbsp;&nbsp;From:
+    &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+    <input type="text" required/><br/><br/>
+    &nbsp;&nbsp; &nbsp;&nbsp;To:&nbsp;&nbsp; &nbsp;
+    &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+    <input type="text" required/>
+    <hr style="border-top: dotted 1px;"/>
+    <h4>
+        Onward(dd/mm/yyyy):
+        &nbsp;&nbsp;
+        Return(dd/mm/yyyy):
+    </h4><br/>
+    <input type="date" name="ondate" id="d1" required/>
+    &nbsp;&nbsp;
+    <input type="date" name="todate" id="d2" required/>
+    <hr style="border-top: dotted 1px;"/>
+    &nbsp;&nbsp;
+    <h4>Passengers:&nbsp;
+        <select required>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+        </select>
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        <input type="checkbox"/>&nbsp;Single Lady
+    </h4>
+    <hr style="border-top: dotted 1px;"/>
+    <input type="submit" name="submit" value="SEARCH AVAILABLE SERVICES" class="button"/>
+    <br/>
+    <a href="">e booking Procedure</a>&nbsp;&nbsp;|&nbsp;&nbsp; <a href="">Help</a>
+</form>
+<script type="text/javascript" src="book.js"></script>
+</body>
+</html>

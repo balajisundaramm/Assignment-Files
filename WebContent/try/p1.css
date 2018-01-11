@@ -1,0 +1,57 @@
+h3 {
+    background: #C0C4B8;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 15px;
+}
+
+button {
+    float: right;
+}
+
+button[name=create] {
+    margin-right: 2%;
+}
+
+body {
+    margin-left: 32%;
+    margin-right: 32%;
+    margin-top: 5%;
+    margin-bottom: 30%;
+}
+
+.scrollable {
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
+.small-btn {
+    margin-right: 5px;
+    border-radius: 5px;
+}
+
+form {
+    margin-left: 15px;
+}
+
+fieldset {
+    border-radius: 10px;
+    background: #eff2ea;
+}
+
+.error {
+    color: red;
+}
+
+input.invalid {
+    border: solid red;
+}
+
+input.valid {
+    border: solid green;
+    padding-top: 6px;
+    width: 80%;
+    border-radius: 4px;
+}
+
+

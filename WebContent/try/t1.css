@@ -1,0 +1,13 @@
+@CHARSET "UTF-8";
+2 h1{
+    3         background-color:#ff8533;
+    4 }
+5 body{
+      6         align:center;
+      7         margin-left:300px;
+      8         margin-right:350px;
+      9 }
+10 .button{
+       11         align:center;
+       12         background-color:#ffaa33;
+       13 }

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert New user</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        label, input{
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .error{
+            color: red;
+            display: none;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $("#reg").on('submit', function (e) {
+                e.preventDefault();
+                $('.error').hide();
+                var name=$('#name').val();
+                var nameSize=name.length
+                var email=$('#email').val();
+                var password=$('#pass').val();
+                var valid=true;
+                var error=""
+                if(!name){
+                    valid=false
+                    error+='Name required '
+                }
+                if(!email){
+                    valid=false
+                    error+=' Email required '
+                }
+                if(!password){
+                    valid=false
+                    error+='Pwd required'
+                }
+                if(valid && (nameSize<3 || nameSize >16)){
+                    valid=false;
+                    error+=' Name should be of min 3 charcters and maximum of 16 characters'
+                }
+                if(valid && (email.length<3 || email.length >60)){
+                    valid=false;
+                    error+=' Email should be of min 3 charcters and maximum of 60 characters'
+                }
+                if(valid && (password.length<5 || password.length >16)){
+                    valid=false;
+                    error+=' password  should be of min 5 charcters and maximum of 60 characters'
+                }
+                if(valid){
+                    this.submit();
+                }else {
+                    $('.error').html(error)
+                    $('.error').show()
+                }
+
+
+            })
+        })
+
+    </script>
+</head>
+<body>
+<h1>Create new user</h1><br/>
+<strong>All fields are required.</strong><br/>
+<h3 class="error"></h3>
+<div>
+    <form action="/do" id="reg" method="post" name="registration">
+        <lable for="name">Name</lable><br/>
+        <input type="text" id="name" name="name">
+        <br/>
+        <lable for="email">Email</lable><br/>
+        <input type="email" id="email" name="email"><br/>
+        <lable for="pass">Password</lable><br/>
+        <input type="password" id="pass" name="password"><br/><br/>
+        <input type="submit" value="Create an account">
+        <input type="button"  value="cancel">
+    </form>
+</div>
+</body>
+</html>
+</html>

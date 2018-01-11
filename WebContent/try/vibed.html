@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>EmployeeFormBootstrap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+          href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css"/>
+
+
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link
+            href="https://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css"
+            rel="stylesheet">
+    <link rel="stylesheet"
+          17 href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+        <
+        link
+        rel = "stylesheet"
+        href = "empjq.css" >
+
+            <script
+        src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" >
+    </script>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script
+            src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="empjq.js">
+
+    </script>
+
+    <style type="text/css">
+        #dialog-form {
+            in display: none;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12">
+            <h1 align="center"
+                style="color: white; background-color: black; margin-top: 0%;">Employee
+                Details</h1>
+            <p id="eerr" style="color: red; margin-top: 0%;" align="center"></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 col-sx-2 col-md-3 col-lg-3">
+
+
+            <button type="button" class="btn btn-success" id="btn">View
+                All Employees
+            </button>
+
+        </div>
+    </div>
+
+    <div id="dialog-form" title="Create new user">
+
+        <p>All form fields are required.</p>
+
+        <form id="myempForm">
+
+
+            <label for="first_name"> Name</label></br> <input type="text" name="name"
+                                                              76 id="first-name"/> <br/> <label for="email">
+            Email</label><br/>
+            <input type="text" name="email" id="email"/><br/> <label
+                for="phone">Phone</label><br/> <input type="text" name="phone"
+                                                      79 id="phone"/> <br/> <label for="company"> Company</label><br/>
+            <input type="text" name="company" id="company"/> </br>
+
+
+        </form>
+
+    </div>
+
+
+    <div class="row">
+        <div
+                class="col-sm-offset-10  col-md-offset-10 col-xs-offset-10 col-md-offset-10">
+
+            <button id="addemp" class="btn btn-success"
+                    style="background-color: green; color: white; float: right;">Add
+                Employee
+            </button>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                <div class="table-responsive">
+                    <table id="users" class="table">
+
+                        <thead>
+
+                        <tr>
+
+                            <th>Name</th>
+
+                            <th>Email</th>
+
+                            <th>Phone</th>
+
+                            <th>Company</th>
+
+                            <th>Edit</th>
+
+                            <th>Delete</th>
+
+                        </tr>
+
+                        </thead>
+
+                        <tbody>
+
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
