@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
     <style>
         label, input{
             width: 100%;
@@ -87,7 +88,7 @@
         <h3>Create new user</h3><br/>
         <strong>All fields are required.</strong><br/>
         <lable for="name">Name</lable><br/>
-        <input type="text" id="name" name="name">
+        <input type="text" data-validation="length alphanumeric" id="name" name="name">
         <br/>
         <lable for="email">Email</lable><br/>
         <input type="email" id="email" name="email"><br/>

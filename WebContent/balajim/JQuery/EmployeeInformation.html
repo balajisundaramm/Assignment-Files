@@ -17,20 +17,24 @@
         }
     </style>
     <script>
-        $(document).ready(function(){
-            $("#addButton").click(function(){
-                var name=$('#givenName').val();
-                var email=$('#givenEmail').val();
-                var phNumber=$('#givenPhNumber').val();
-                var company=$('#givenCompany').val();
-                var template = '<tr class="hidden template">'+
-                '<td class="addedName added">test1</td>'+
-                        '<td class="addedEmail added">test2</td>'+
-                        '<td class="addedPhNumber added">test3</td>'+
-                        '<td class="addedCompany added">test4</td>'+
-                        '<td><a href=""><span class="glyphicon glyphicon-edit"></span></a></td>'+
-                        '<td><a href=""><span class="glyphicon glyphicon-trash"></span></a></td>'+
-                        '</tr>';
+        $(document).ready(function () {
+            $("#addButton").click(function () {
+                var name = $('#givenName').val();
+                var email = $('#givenEmail').val();
+                var phNumber = $('#givenPhNumber').val();
+                var company = $('#givenCompany').val();
+                var template = '<tr class="hidden template">' +
+                    '<td class="addedName added">test1</td>' +
+                    '<td class="addedEmail added">test2</td>' +
+                    '<td class="addedPhNumber added">test3</td>' +
+                    '<td class="addedCompany added">test4</td>' +
+                    '<td>' +
+                    '   <button type="button" id="editEmployee" class="btn btn-info" data-toggle="modal"\n' +
+                    '   data-target="#EditModal"><span class="glyphicon glyphicon-edit"></span>\' +
+                    '<n></n></button>' +
+                    '</td>' +
+                    '<td><a href=""><span class="glyphicon glyphicon-trash"></span></a></td>' +
+                    '</tr>';
                 $('.close').click()
                 $('.addInputs').val("");
                 $('.addedName').html(name)
@@ -54,12 +58,13 @@
     </div>
     <div class="col-sm-10 table-responsive">
         <div class="text-right">
-            <button type="button" id="addEmployee" class="btn btn-info" data-toggle="modal" data-target="#AddModal">Add New Employee
+            <button type="button" id="addEmployee" class="btn btn-info" data-toggle="modal" data-target="#AddModal">Add
+                New Employee
             </button>
             <br/>
             <br/>
         </div>
-
+<!--modal for add employee button-->
         <div class="modal fade" id="AddModal" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -83,13 +88,15 @@
                         <div class="col-sm-2">
                             <lable>Mobile:*</lable>
                         </div>
-                        <div class="col-sm-10"><input type="text" class="addInputs" id="givenPhNumber" name="givenPhNumber"
+                        <div class="col-sm-10"><input type="text" class="addInputs" id="givenPhNumber"
+                                                      name="givenPhNumber"
                                                       placeholder="Enter mobile number(9XXXXXXXXX)"><br/><br/>
                         </div>
                         <div class="col-sm-2">
                             <lable>Company:*</lable>
                         </div>
-                        <div class="col-sm-10"><input type="text" class="addInputs" id="givenCompany" name="givenCompany"
+                        <div class="col-sm-10"><input type="text" class="addInputs" id="givenCompany"
+                                                      name="givenCompany"
                                                       placeholder="Enter company name"><br/><br/>
                         </div>
                     </div>
@@ -99,6 +106,49 @@
                 </div>
             </div>
         </div>
+        <!--Modal for edit employee button-->
+        <div class="modal fade" id="EditModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Add Employee</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-sm-2">
+                            <lable>Name:*</lable>
+                        </div>
+                        <div class="col-sm-10"><input type="text" id="editName" name="editName" class="addInputs"
+                                                      placeholder="Enter name"><br/><br/></div>
+                        <div class="col-sm-2">
+                            <lable>Email:*
+                            </lable>
+                        </div>
+                        <div class="col-sm-10"><input type="text" class="addInputs" id="editEmail" name="editEmail"
+                                                      placeholder="Enter Email id (abc@xyz.com)"><br/><br/>
+                        </div>
+                        <div class="col-sm-2">
+                            <lable>Mobile:*</lable>
+                        </div>
+                        <div class="col-sm-10"><input type="text" class="addInputs" id="editPhNumber"
+                                                      name="editPhNumber"
+                                                      placeholder="Enter mobile number(9XXXXXXXXX)"><br/><br/>
+                        </div>
+                        <div class="col-sm-2">
+                            <lable>Company:*</lable>
+                        </div>
+                        <div class="col-sm-10"><input type="text" class="addInputs" id="editCompany"
+                                                      name="editCompany"
+                                                      placeholder="Enter company name"><br/><br/>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="editButton" class="btn btn-info">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Responsive table hard coded-->
         <table class="table">
             <tr>
                 <th>Name</th>
@@ -114,7 +164,11 @@
                 <td>john.s@gmail.com</td>
                 <td>9865724132</td>
                 <td>wipro</td>
-                <td><a href=""><span class="glyphicon glyphicon-edit"></span></a></td>
+                <td>
+                    <button type="button" id="editEmployee" class="btn btn-info" data-toggle="modal"
+                            data-target="#EditModal"><span class="glyphicon glyphicon-edit"></span>
+                    </button>
+                </td>
                 <td><a href=""><span class="glyphicon glyphicon-trash"></span></a></td>
             </tr>
             <tr>
@@ -122,7 +176,11 @@
                 <td>sheela.k@gmail.com</td>
                 <td>8865724132</td>
                 <td>wipro</td>
-                <td><a href=""><span class="glyphicon glyphicon-edit"></span></a></td>
+                <td>
+                    <button type="button" id="editEmployee" class="btn btn-info" data-toggle="modal"
+                            data-target="#EditModal"><span class="glyphicon glyphicon-edit"></span>
+                    </button>
+                </td>
                 <td><a href=""><span class="glyphicon glyphicon-trash"></span></a></td>
             </tr>
             <tr class="hidden template">
@@ -130,18 +188,16 @@
                 <td class="addedEmail added">test2</td>
                 <td class="addedPhNumber added">test3</td>
                 <td class="addedCompany added">test4</td>
-                <td><a href="#AddModal"><span class="glyphicon glyphicon-edit"></span></a></td>
+                <td>
+                    <button type="button" id="editEmployee" class="btn btn-info" data-toggle="modal"
+                            data-target="#EditModal"><span class="glyphicon glyphicon-edit"></span>
+                    </button>
+                </td>
                 <td><a href=""><span class="glyphicon glyphicon-trash"></span></a></td>
             </tr>
             </tbody>
         </table>
     </div>
-    <div class="col-sm-2">
-
-    </div>
 </div>
 </body>
 </html>
-<button type="button" class="btn btn-info">
-    <span class="glyphicon glyphicon-search"></span> Search
-</button>

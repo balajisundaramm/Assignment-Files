@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        h2 {
+            color: white;
+            background-color: black;
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+        }
+    </style>
+    <script>
+        function manageTable() {
+            var employees = JSON.parse(localStorage.getItem("employees"));
+            if (employees) {
+                for (var emp in employees) {
+                    $("#empTable").find('tbody')
+                        .append($('<tr>')
+                            .append($('<td>')
+                                .text(employees[emp].givenName))
+                            .append($('<td>')
+                                .text(employees[emp].givenEmail))
+                            .append($('<td>')
+                                .text(employees[emp].givenPhNumber))
+                            .append($('<td>')
+                                .text(employees[emp].givenCompany))
+                            .append('<td>' +
+                                '<button type="button" class="edit" id="' + emp + '" ' +
+                                'data-toggle="modal"data-target="#EditModal">' +
+                                '<span class="glyphicon glyphicon-edit"></span></button> </td> ' +
+                                '<td><a id="' + emp + '" href="#" class="delete"><span class="glyphicon glyphicon-trash"></span></a></td>'
+                            )
+                        );
+                }
+            }
+        }
+
+        $(document).ready(function () {
+            manageTable();
+            $("#addButton").on('click', function () {
+                var employee = {};
+                $.each($('#myForm').serializeArray(), function (_, kv) {
+                    employee[kv.name] = kv.value;
+                });
+                var employees = JSON.parse(localStorage.getItem("employees"));
+                if (!employees) {
+                    employees = [];
+                }
+                employees.push(employee);
+                localStorage.setItem("employees", JSON.stringify(employees));
+                var index = employees.length - 1
+                $("#empTable tr:last").parent()
+                    .append($('<tr id="\' + index + \'">')
+                        .append($('<td>')
+                            .text(employee.givenName))
+                        .append($('<td>')
+                            .text(employee.givenEmail))
+                        .append($('<td>')
+                            .text(employee.givenPhNumber))
+                        .append($('<td>')
+                            .text(employee.givenCompany))
+                        .append('<td>' +
+                            '<button type="button" class="edit" id="' + index + '"   ' +
+                            'data-toggle="modal"data-target="#EditModal">' +
+                            '<span class="glyphicon glyphicon-edit"></span></button> </td> ' +
+                            '<td><a id="' + index + '" class="delete" href="#"><span class="glyphicon glyphicon-trash"></span></a></td>'
+                        )
+                    );
+                $('.close').click();
+
+            });
+            $('.delete').click(function () {
+                var employees = JSON.parse(localStorage.getItem("employees"));
+                var index = this.id;
+                console.log(index);
+                employees = employees.splice(index, 1);
+                localStorage.setItem("employees", JSON.stringify(employees));
+                $('.close').click();
+                $(this).parent().parent().remove();
+            })
+            $('.edit').on('click', function () {
+                var employees = JSON.parse(localStorage.getItem("employees"));
+                var index = this.id;
+                var e = 0;
+                console.log(index);
+                $(employees).each(function () {
+                    if (e++ == index) {
+                        console.log(this);
+                        var edN = this.givenName;
+                        var edE = this.givenEmail;
+                        var editNo = this.givenPhNumber;
+                        var editCom = this.givenCompany;
+                        $('#editN').append($('valu'))
+
+                    }
+                });
+            });
+
+            $('#updateButton').on('click', function () {
+                var employee = {};
+                var id=this.id;
+                $.each($('#editForm').serializeArray(), function (_, kv) {
+                    employee[kv.name] = kv.value;
+                });
+
+                var employees = JSON.parse(localStorage.getItem("employees"));
+                var index = employees.length - 1;
+                $("#empTable tr:nth-of-type(1)").parent()
+                    .append($('<tr id="\' + index + \'">')
+                        .append($('<td>')
+                            .text(employee.editName))
+                        .append($('<td>')
+                            .text(employee.editEmail))
+                        .append($('<td>')
+                            .text(employee.editPhNumber))
+                        .append($('<td>')
+                            .text(employee.editCompany))
+                        .append('<td>' +
+                            '<button type="button" class="edit" id="' + index + '"   ' +
+                            'data-toggle="modal"data-target="#EditModal">' +
+                            '<span class="glyphicon glyphicon-edit"></span></button> </td> ' +
+                            '<td><a id="' + index + '" class="delete" href="#"><span class="glyphicon glyphicon-trash"></span></a></td>'
+                        )
+                    );
+                employees.push(employee);
+                $('.close').click();
+                $(this).parent().parent().remove();
+
+            })
+        });
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Employee Information</h2>
+    <div class="col-sm-2">
+        <button type="button" class="btn btn-info">View All Employees</button>
+        <br/>
+    </div>
+    <div class="col-sm-10 table-responsive">
+        <div class="text-right">
+            <button type="button" id="addEmployee" class="btn btn-info" data-toggle="modal" data-target="#AddModal">Add
+                New Employee
+            </button>
+            <br/>
+            <br/>
+        </div>
+        <!--modal for add employee button-->
+        <div class="modal fade" id="AddModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Add Employee</h4>
+                    </div>
+                    <form id="myForm">
+                        <div class="modal-body">
+                            <div class="col-sm-2">
+                                <lable>Name:*</lable>
+                            </div>
+                            <div class="col-sm-10"><input type="text" id="givenName" name="givenName" class="addInputs"
+                                                          placeholder="Enter name"><br/><br/></div>
+                            <div class="col-sm-2">
+                                <lable>Email:*
+                                </lable>
+                            </div>
+                            <div class="col-sm-10"><input type="text" class="addInputs" id="givenEmail"
+                                                          name="givenEmail"
+                                                          placeholder="Enter Email id (abc@xyz.com)"><br/><br/>
+                            </div>
+                            <div class="col-sm-2">
+                                <lable>Mobile:*</lable>
+                            </div>
+                            <div class="col-sm-10"><input type="text" class="addInputs" id="givenPhNumber"
+                                                          name="givenPhNumber"
+                                                          placeholder="Enter mobile number(9XXXXXXXXX)"><br/><br/>
+                            </div>
+                            <div class="col-sm-2">
+                                <lable>Company:*</lable>
+                            </div>
+                            <div class="col-sm-10"><input type="text" class="addInputs" id="givenCompany"
+                                                          name="givenCompany"
+                                                          placeholder="Enter company name"><br/><br/>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="addButton" class="btn btn-info">Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--Modal for edit employee button-->
+        <div class="modal fade" id="EditModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Edit Employee</h4>
+                    </div>
+                    <form id="editForm">
+                        <div class="modal-body">
+                            <div class="col-sm-2">
+                                <lable>Name:*</lable>
+                            </div>
+                            <div id="editN" class="col-sm-10"><input type="text" id="editName" name="editName"
+                                                                     class="addInputs"
+                                                                     value=><br/><br/></div>
+                            <div class="col-sm-2">
+                                <lable>Email:*
+                                </lable>
+                            </div>
+                            <div id="editE" class="col-sm-10"><input type="text" class="addInputs" id="editEmail"
+                                                                     name="editEmail"
+                                                                     value=><br/><br/>
+                            </div>
+                            <div class="col-sm-2">
+                                <lable>Mobile:*</lable>
+                            </div>
+                            <div id="editP" class="col-sm-10"><input type="text" class="addInputs" id="editPhNumber"
+                                                                     name="editPhNumber"
+                                                                     value=><br/><br/>
+                            </div>
+                            <div class="col-sm-2">
+                                <lable>Company:*</lable>
+                            </div>
+                            <div id="editC" class="col-sm-10"><input type="text" class="addInputs" id="editCompany"
+                                                                     name="editCompany"
+                                                                     value=><br/><br/>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="updateButton" class="btn btn-info">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--Responsive table hard coded-->
+        <table class="table" id="empTable">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Company</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

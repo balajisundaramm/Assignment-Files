@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert New user</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+
+    <style>
+        label, input {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+
+        #reg {
+
+            width: 600px;
+            height: 300px;
+            overflow-y: scroll;
+        }
+
+        body {
+            margin-left: 300px;
+            margin-right: 300px;
+            margin-top: 45px;
+        }
+
+        h3 {
+            background-color: #cccaca;
+        }
+    </style>
+
+    <script>
+        $(function () {
+            $("#reg").validate({
+
+                rules: {
+
+                    name: {
+                        required: true,
+                        minlength: 3,
+                        maxlength: 16,
+                    },
+
+                    email: {
+                        required: true,
+                        maxlength: 60,
+                    },
+
+                    password: {
+                        required: true,
+                        minlength: 5,
+                        maxlength: 16,
+                    },
+
+                },
+
+                message: {
+
+                    name: {
+                        required: "Name is mandatory",
+                        minlength: "Name should be minimum 3 characters.",
+                        maxlength: "Name should be maximum 16 characters"
+                    },
+
+                    email: {
+                        required: "Email is mandatory",
+                        maxlength: "your email can have atmost 60 characters"
+                    },
+
+                    password: {
+                        required: "Please enter your password",
+                        minlength: "your password should have at least 5 characters",
+                        maxlength: "your password can have atmost 16 characters"
+                    }
+                },
+                submitHandler: function (form) {
+                    form.submit();
+                }
+            });
+        });
+
+    </script>
+
+</head>
+<body>
+<div>
+    <form action="" id="reg" method="post" name="registration">
+        <h3>Create new user</h3><br/>
+        <strong>All fields are required.</strong><br/>
+        <lable for="name">Name</lable>
+        <br/>
+        <input type="text" id="name" name="name" required>
+        <br/>
+        <div></div>
+        <lable for="email">Email</lable>
+        <br/>
+        <input type="email" id="email" name="email" required><br/>
+        <div></div>
+        <lable for="pass">Password</lable>
+        <br/>
+        <input type="password" id="pass" name="password" required><br/><br/>
+        <div></div>
+        <input type="submit" value="Create an account">
+        <input type="reset" value="cancel"/>
+    </form>
+</div>
+</body>
+</html>
