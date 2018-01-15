@@ -40,66 +40,92 @@
         a {
             margin-left: 10%;
         }
-        table td{
+
+        table td {
             padding: 10px;
         }
+
         .button {
             align: center;
             background-color: #ffaa33;
         }
     </style>
     <script>
-        $(function () {
-            $("#ticket").validate({
+        $(document).ready(function () {
+            $(function () {
+                $("#ticket").validate({
 
-                rules: {
-                    way: {
-                        required: true
-                    },
-                    from:{
-                        required: true
-                    },
-                    to:{
-                        required: true
-                    },
-                    onward:{
+                    rules: {
+                        way: {
+                            required: true,
+                        },
+                        from: {
                             required: true
+                        },
+                        to: {
+                            required: true
+                        },
+                        onward: {
+                            required: true
+                        },
+                        return: {
+                            required: true
+                        },
+                        seat: {
+                            required: true
+                        }
                     },
-                    return:{
-                        required: true
+
+                    messages: {
+
+                        way: {
+                            required: "Trip mode is mandatory."
+
+                        },
+
+                        from: {
+                            required: "From destination is mandatory. "
+                        },
+
+                        to: {
+                            required: "To destination is mandatory. "
+
+                        },
+                        onward: {
+                            required: "Onward date is mandatory."
+
+                        },
+                        return: {
+                            required: "Return date is mandatory. "
+                        }
                     },
-                    seat:{
-                        required: true
+                    submitHandler: function (form) {
+                        form.submit();
                     }
-
-                },
-
-                message: {
-
-                    way: {
-                        required: "Trip mode is mandatory."
-
-                    },
-
-                    from: {
-                      required: "From destination is mandatory. "
-                    },
-
-                    to:{
-                        required: "To destination is mandatory. "
-
-                    },
-                    onward:{
-                        required: "Onward date is mandatory."
-
-                    },
-                    return:{
-                        required: "Return date is mandatory. "
+                });
+            });
+            $("#ticket").on('submit', function (e) {
+                e.preventDefault();
+                $('.error').hide();
+                var error = "";
+                var valid = true;
+                var onward = $('#onward').val();
+                var returnDate = $('#return').val();
+                $('input[type=radio]').on('change', function () {
+                    console.log("this name " + this.name);
+                    if (this.name == 'way') {
+                        if (this.value == 'One Way') {
+                            $('#return').prop('disabled', false)
+                        }
+                        else {
+                            $('#list1,#time1').prop('disabled', true)
+                        }
                     }
-                },
-                submitHandler: function (form) {
-                    form.submit();
-                }
+                    if (valid && (onward > returnDate)) {
+                        valid = false;
+                        error += "Return date should be after onward date. ";
+                    }
+                });
             });
         });
 
@@ -107,7 +133,6 @@
     <title>Ticket Booking</title>
 </head>
 <body>
-<h4 class="error"></h4>
 <h1>Search & Book Tickets</h1>
 <div>
 
@@ -128,7 +153,7 @@
                         <td><input type="text" id="from" name="from" size="40" required>
                         </td>
                     </tr>
-                    <div> </div>
+                    <div></div>
             </div>
             <div class="text-2">
 
@@ -136,21 +161,22 @@
                     <td>
                         <lable for="to">To :</lable>
                     </td>
-                    <td><input type="text" id="to" name="to" size="40"  required></td>
+                    <td><input type="text" id="to" name="to" size="40" required></td>
                 </tr>
-                <div> </div>
+                <div></div>
                 </table>
             </div>
 
             <div class="date-1">
                 <lable>Onward(dd/mm/yyyy):</lable>
                 <input type="date" name="onward" id="onward" required>
-                <div> </div>
+                <div></div>
             </div>
             <div class="date-2">
                 <lable>Return(dd/mm/yyyy):</lable>
                 <input type="date" name="return" id="return" required>
-                <div> </div>
+                <div></div>
+                <h4 class="error"></h4>
             </div>
             <div class="check-1">
                 <lable>Passengers</lable>
@@ -166,13 +192,13 @@
                     <option value="9">9</option>
                 </select>
             </div>
-            <div> </div>
+            <div></div>
             <div class="check-2">
-                <input type="checkbox" value="single lady">
+                <input type="checkbox" name="singleLady" value="single lady">
                 <lable>Single Lady</lable>
                 <br/><br/>
             </div>
-            <div> </div>
+            <div></div>
         </div>
         <div class="final">
             <input class="button" type="submit" value="SEARCH AVAILABLE SERVICES" align="center"><br/><br/>
