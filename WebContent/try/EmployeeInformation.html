@@ -19,25 +19,26 @@
     <script>
         function manageTable() {
             var employees = JSON.parse(localStorage.getItem("employees"));
+            console.log(employees)
             if (employees) {
                 for (var emp in employees) {
                     $("#empTable").find('tbody')
-                        .append($('<tr>')
-                            .append($('<td>')
-                                .text(employees[emp].givenName))
-                            .append($('<td>')
-                                .text(employees[emp].givenEmail))
-                            .append($('<td>')
-                                .text(employees[emp].givenPhNumber))
-                            .append($('<td>')
-                                .text(employees[emp].givenCompany))
-                            .append('<td>' +
-                                '<button type="button" class="edit" id="' + emp + '" ' +
-                                'data-toggle="modal"data-target="#EditModal">' +
-                                '<span class="glyphicon glyphicon-edit"></span></button> </td> ' +
-                                '<td><a id="' + emp + '" href="#" class="delete"><span class="glyphicon glyphicon-trash"></span></a></td>'
-                            )
-                        );
+                            .append($('<tr>')
+                                    .append($('<td>')
+                                            .text(employees[emp].givenName))
+                                    .append($('<td>')
+                                            .text(employees[emp].givenEmail))
+                                    .append($('<td>')
+                                            .text(employees[emp].givenPhNumber))
+                                    .append($('<td>')
+                                            .text(employees[emp].givenCompany))
+                                    .append('<td>' +
+                                            '<button type="button" class="edit" id="' + emp + '" ' +
+                                            'data-toggle="modal"data-target="#EditModal">' +
+                                            '<span class="glyphicon glyphicon-edit"></span></button> </td> ' +
+                                            '<td><a id="' + emp + '" href="#" class="delete"><span class="glyphicon glyphicon-trash"></span></a></td>'
+                                    )
+                            );
                 }
             }
         }
@@ -57,82 +58,55 @@
                 localStorage.setItem("employees", JSON.stringify(employees));
                 var index = employees.length - 1
                 $("#empTable tr:last").parent()
-                    .append($('<tr id="\' + index + \'">')
-                        .append($('<td>')
-                            .text(employee.givenName))
-                        .append($('<td>')
-                            .text(employee.givenEmail))
-                        .append($('<td>')
-                            .text(employee.givenPhNumber))
-                        .append($('<td>')
-                            .text(employee.givenCompany))
-                        .append('<td>' +
-                            '<button type="button" class="edit" id="' + index + '"   ' +
-                            'data-toggle="modal"data-target="#EditModal">' +
-                            '<span class="glyphicon glyphicon-edit"></span></button> </td> ' +
-                            '<td><a id="' + index + '" class="delete" href="#"><span class="glyphicon glyphicon-trash"></span></a></td>'
-                        )
-                    );
+                        .append($('<tr id="\' + index + \'">')
+                                .append($('<td>')
+                                        .text(employee.givenName))
+                                .append($('<td>')
+                                        .text(employee.givenEmail))
+                                .append($('<td>')
+                                        .text(employee.givenPhNumber))
+                                .append($('<td>')
+                                        .text(employee.givenCompany))
+                                .append('<td>' +
+                                        '<button type="button" class="edit" id="' + index + '"   ' +
+                                        'data-toggle="modal"data-target="#EditModal">' +
+                                        '<span class="glyphicon glyphicon-edit"></span></button> </td> ' +
+                                        '<td><a id="' + index + '" class="delete" href="#"><span class="glyphicon glyphicon-trash"></span></a></td>'
+                                )
+                        );
                 $('.close').click();
 
             });
-            $('.delete').click(function () {
+            $('body').on('click', '.delete', function () {
                 var employees = JSON.parse(localStorage.getItem("employees"));
-                var index = this.id;
-                console.log(index);
-                employees = employees.splice(index, 1);
+                var index = Number(this.id);
+                employees.splice(index, 1);
                 localStorage.setItem("employees", JSON.stringify(employees));
                 $('.close').click();
                 $(this).parent().parent().remove();
             })
-            $('.edit').on('click', function () {
+            $('body').on('click', '.edit' , function () {
                 var employees = JSON.parse(localStorage.getItem("employees"));
                 var index = this.id;
-                var e = 0;
-                console.log(index);
-                $(employees).each(function () {
-                    if (e++ == index) {
-                        console.log(this);
-                        var edN = this.givenName;
-                        var edE = this.givenEmail;
-                        var editNo = this.givenPhNumber;
-                        var editCom = this.givenCompany;
-                        $('#editN').append($('valu'))
+                var employee=employees[index];
+                $('#editName').val(employee.givenName);
+                $('#editEmail').val(employee.givenEmail);
+                $('#editPhNumber').val(employee.givenPhNumber);
+                $('#editCompany').val(employee.givenCompany);
+                $('#index').val(index)
 
-                    }
-                });
             });
 
             $('#updateButton').on('click', function () {
                 var employee = {};
-                var id=this.id;
+                var index=$('#index').val();
                 $.each($('#editForm').serializeArray(), function (_, kv) {
                     employee[kv.name] = kv.value;
                 });
-
                 var employees = JSON.parse(localStorage.getItem("employees"));
-                var index = employees.length - 1;
-                $("#empTable tr:nth-of-type(1)").parent()
-                    .append($('<tr id="\' + index + \'">')
-                        .append($('<td>')
-                            .text(employee.editName))
-                        .append($('<td>')
-                            .text(employee.editEmail))
-                        .append($('<td>')
-                            .text(employee.editPhNumber))
-                        .append($('<td>')
-                            .text(employee.editCompany))
-                        .append('<td>' +
-                            '<button type="button" class="edit" id="' + index + '"   ' +
-                            'data-toggle="modal"data-target="#EditModal">' +
-                            '<span class="glyphicon glyphicon-edit"></span></button> </td> ' +
-                            '<td><a id="' + index + '" class="delete" href="#"><span class="glyphicon glyphicon-trash"></span></a></td>'
-                        )
-                    );
-                employees.push(employee);
+                employees[index]=employee;
+                localStorage.setItem("employees", JSON.stringify(employees));
                 $('.close').click();
-                $(this).parent().parent().remove();
-
             })
         });
     </script>
@@ -141,18 +115,20 @@
 
 <div class="container">
     <h2>Employee Information</h2>
-    <div class="col-sm-2">
-        <button type="button" class="btn btn-info">View All Employees</button>
-        <br/>
-    </div>
-    <div class="col-sm-10 table-responsive">
-        <div class="text-right">
-            <button type="button" id="addEmployee" class="btn btn-info" data-toggle="modal" data-target="#AddModal">Add
-                New Employee
-            </button>
-            <br/>
-            <br/>
+    <div>
+        <div class="row">
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-info">View All Employees</button>
+                <br/>
+            </div>
+            <div class="col-sm-2 col-sm-offset-8">
+                <button type="button" id="addEmployee" class="btn btn-info" data-toggle="modal" data-target="#AddModal">
+                    Add
+                    New Employee
+                </button>
+            </div>
         </div>
+        <br>
         <!--modal for add employee button-->
         <div class="modal fade" id="AddModal" role="dialog">
             <div class="modal-dialog">
@@ -207,6 +183,7 @@
                         <h4 class="modal-title">Edit Employee</h4>
                     </div>
                     <form id="editForm">
+                        <input type="hidden" id="index">
                         <div class="modal-body">
                             <div class="col-sm-2">
                                 <lable>Name:*</lable>
@@ -245,7 +222,8 @@
             </div>
         </div>
         <!--Responsive table hard coded-->
-        <table class="table" id="empTable">
+        <div class="table-responsive">
+            <table class="table" id="empTable">
             <tr>
                 <th>Name</th>
                 <th>Email</th>
@@ -254,7 +232,8 @@
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
-        </table>
+            </table>
+        </div>
     </div>
 </div>
 </body>
