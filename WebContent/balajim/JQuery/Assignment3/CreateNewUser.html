@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert New user</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+    <link rel="stylesheet" href="main.css">
+    <script src="validation.js"></script>
+</head>
+<body>
+<div>
+    <form action="" id="reg" method="post" name="registration">
+        <h3>Create new user</h3><br/>
+        <strong>All fields are required.</strong><br/>
+        <lable for="name">Name</lable>
+        <br/>
+        <input type="text" id="name" name="name" required>
+        <br/>
+        <div></div>
+        <lable for="email">Email</lable>
+        <br/>
+        <input type="email" id="email" name="email" required><br/>
+        <div></div>
+        <lable for="pass">Password</lable>
+        <br/>
+        <input type="password" id="pass" name="password" required><br/><br/>
+        <div></div>
+        <input type="submit" value="Create an account">
+        <input type="reset" value="cancel"/>
+    </form>
+</div>
+</body>
+</html>
